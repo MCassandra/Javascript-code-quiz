@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Code Quiz</title>
 </head>
 <body>
-    <button id = "startButton">START</button>
-    <section class="questionContainer">Questions</section>
+    <section>
+    <button id = "startButton" class = "start-btn btn">START</button></section>
+    <section class="questionContainer" class="hide">Questions</section>
+    <section class="answersContainer" class="hide">
+        <button class="button">Ans 1</button>
+        <button class="button">Ans 2</button>
+        <button class="button">Ans 3</button>
+        <button class="button">Ans 4</button></section>
+    <button id = "nextButton" class = "next-btn btn hide">NEXT</button>
     <section class="timerContainer"></section>
-    <script src= "script.js"></script>
+    
+    <script src= "./assets/script.js"></script>    
 </body>
 </html>
