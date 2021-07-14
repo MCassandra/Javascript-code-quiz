@@ -1,5 +1,5 @@
 var startButton = document.querySelector("#startButton");
-var questionElement = document.getElementById("questions") 
+ 
 var answerButtons = document.querySelectorAll ("button")
 
 startButton.addEventListener("click", startQuiz)
@@ -37,19 +37,15 @@ function startQuiz(){
     placeQuestionsOnPage(currentQuestionIndex)
 
 }
-
-// function askQuestion(){
-//     placeQuestionsOnPage(questions[currentQuestionIndex])
-
-// }
-
 function placeQuestionsOnPage(index){
     var questionText = questions[index].questionText;
-    // var answers= questions.answers;
-    // var correctAnswerIndex= questions.correctAnswerIndex;
+    // var answers= questions.answers[index];
+    var correctAnswerIndex= questions.correctAnswerIndex;
 
     var questionEl=document.getElementById("questions")
     questionEl.innerHTML=questionText
+    // var answersEl=document.querySelector("buttons")
+    // answersEl.innerHTML=answers
 }
 
 // function chooseAnswer(){
