@@ -1,13 +1,12 @@
+// elements i need to grab 
 var startButton = document.querySelector("#startButton");
- 
 var answerButtons = document.querySelectorAll ("button")
-
+var score=0;
+var timeleft=0;
 startButton.addEventListener("click", startQuiz)
 
 let currentQuestionIndex   
 
-// teacher demo this code structure in office hours:
-var score=0;
 // questions for the quiz
 var questions=[
     {
@@ -29,7 +28,7 @@ var questions=[
 
 
 
-console.log(questions[0].questionText)
+
 
 function startQuiz(){
     console.log ("started")
@@ -40,7 +39,7 @@ function startQuiz(){
 function placeQuestionsOnPage(index){
     var questionText = questions[index].questionText;
     // var answers= questions.answers[index];
-    var correctAnswerIndex= questions.correctAnswerIndex;
+    // var correctAnswerIndex= questions.correctAnswerIndex;
 
     var questionEl=document.getElementById("questions")
     questionEl.innerHTML=questionText
@@ -52,7 +51,7 @@ function placeQuestionsOnPage(index){
 
 // }
 
-// Loop through the questions and get user's response
+// part of teacher demo: Loop through the questions and get user's response
 for (let i = 0; i<questions.length; i++){
     var response=placeQuestionsOnPage(questions[i].questionText)
     if (reponse === questions.correctAnswerIndex){
