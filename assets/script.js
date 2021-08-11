@@ -33,7 +33,9 @@ var questions=[
 function startQuiz(){
     console.log ("started")
     currentQuestionIndex=0
-    placeQuestionsOnPage(currentQuestionIndex)
+    placeQuestionsOnPage(currentQuestionIndex);
+    placeAnswersOnPage(currentQuestionIndex);
+
 
 }
 function placeQuestionsOnPage(index){
@@ -47,7 +49,18 @@ function placeQuestionsOnPage(index){
     // answersEl.innerHTML=answers
 }
 
-// function chooseAnswer(){
+function placeAnswersOnPage(index){
+    var answerText = questions[index].answers;
+    var answer1 = document.getElementById("btn1");
+    var answer2 = document.getElementById("btn2");
+    var answer3 = document.getElementById("btn3");
+    var answer4 = document.getElementById("btn4");
+
+    answer1.textContent = answerText[0];
+    answer2.textContent = answerText[1];
+    answer3.textContent = answerText[2];
+    answer4.textContent = answerText[3];
+}
 
 // }
 

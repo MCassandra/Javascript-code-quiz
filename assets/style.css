@@ -14,7 +14,10 @@ body {
     margin: 0;
     background-color: blue;
 }
-
+.section {
+    display:flex;
+    flex-direction: column;
+}
 .questionContainer {
     width: 700px;
     max-width: 90%;
