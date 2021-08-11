@@ -1,8 +1,8 @@
 // elements i need to grab 
 var startButton = document.querySelector("#startButton");
 var answerButtons = document.querySelectorAll ("button")
-var score=0;
-var timeleft=0;
+// var score=0;
+// var timeleft=0;
 startButton.addEventListener("click", startQuiz)
 
 let currentQuestionIndex   
@@ -60,18 +60,19 @@ function placeAnswersOnPage(index){
     answer2.textContent = answerText[1];
     answer3.textContent = answerText[2];
     answer4.textContent = answerText[3];
-}
+
+};
 
 // }
 
 // part of teacher demo: Loop through the questions and get user's response
 for (let i = 0; i<questions.length; i++){
     var response=placeQuestionsOnPage(questions[i].questionText)
-    if (reponse === questions.correctAnswerIndex){
-        score++;
+    if (reponse === questions.correct){
+        // score++;
         alert("correct");
     }else (reponse !=questions[i].answers)
-        score--;
+        // score--;
         alert("wrong");
     }
 
