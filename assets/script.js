@@ -68,7 +68,7 @@ function placeAnswersOnPage(index){
 // part of teacher demo: Loop through the questions and get user's response
 for (let i = 0; i<questions.length; i++){
     var response=placeQuestionsOnPage(questions[i].questionText)
-    if (reponse === questions.correct){
+    if (reponse === questions[i].correct){
         // score++;
         alert("correct");
     }else (reponse !=questions[i].answers)
