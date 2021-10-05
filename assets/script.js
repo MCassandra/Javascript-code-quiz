@@ -1,10 +1,10 @@
 // elements i need to grab 
+var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector("#startButton");
-// var answerButtons = document.querySelectorAll("button")
-// var score=0;
-// var timeleft=0;
-startButton.addEventListener("click", startQuiz)
+startButton.addEventListener("click", startQuiz);
 
+var timer;
+var timerCount;
 let currentQuestionIndex
 
 // questions for the quiz
@@ -26,35 +26,31 @@ var questions = [
     }
 ]
 
-
-
-
-
+// start the quiz
 function startQuiz() {
     console.log("started")
     currentQuestionIndex = 0;
+    timerCount = 10;
     placeQuestionsOnPage(currentQuestionIndex);
     placeAnswersOnPage(currentQuestionIndex);
-
-
+    startButton.disabled = true;
+    startTimer();
 }
+
+
 function placeQuestionsOnPage(index) {
     var questionText = questions[index].questionText;
-    // var answers= questions.answers[index];
-    // var correctAnswerIndex= questions.correctAnswerIndex;
-
     var questionEl = document.getElementById("questions")
-    questionEl.innerHTML = questionText
-    // var answersEl=document.querySelector("buttons")
-    // answersEl.innerHTML=answers
+    questionEl.textContent = questionText;
+
 }
 
 function placeAnswersOnPage(index) {
-    var answerText = questions[index].answers;
-    var answer1 = document.getElementById("btn1");
-    var answer2 = document.getElementById("btn2");
-    var answer3 = document.getElementById("btn3");
-    var answer4 = document.getElementById("btn4");
+    let answerText = questions[index].answers;
+    let answer1 = document.getElementById("btn1");
+    let answer2 = document.getElementById("btn2");
+    let answer3 = document.getElementById("btn3");
+    let answer4 = document.getElementById("btn4");
 
     answer1.textContent = answerText[0];
     answer2.textContent = answerText[1];
@@ -63,18 +59,45 @@ function placeAnswersOnPage(index) {
 
 };
 
-function checkAnswer(index) {
-    var correctAnswer = document.querySelectorAll(".button");
-    correctAnswer.addEventListener("click", event => {
-        if (event.target.correctAnswer === questions[index].correct) {
-            currentQuestionIndex++;
+function checkAnswer(event) {
+    const selectAnswer = questions[currentQuestionIndex].correct;
+    if (event.target.textContent === selectAnswer) {
+        currentQuestionIndex++;
+        if (currentQuestionIndex >= questions.length) {
+            console.log("game over");
+        }
+        else {
             placeQuestionsOnPage(currentQuestionIndex);
             placeAnswersOnPage(currentQuestionIndex);
         }
-    })
-}
+    }
+};
 
 
-checkAnswer();
+var selectAnswer = document.querySelector(".answersContainer");
+selectAnswer.addEventListener("click", checkAnswer);
+
+// // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
+function startTimer() {
+    // Sets timer
+    timer = setInterval(function() {
+      timerCount--;
+      timerElement.textContent = timerCount;
+    //   if (timerCount >= 0) {
+    //     // Tests if win condition is met
+    //     if (isWin && timerCount > 0) {
+    //       // Clears interval and stops timer
+    //       clearInterval(timer);
+    //       winGame();
+    //     }
+    //   }
+      // Tests if time has run out
+      if (timerCount === 0) {
+        // Clears interval
+        clearInterval(timer);
+        // loseGame();
+      }
+    }, 1000);
+  };
 
 
