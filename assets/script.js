@@ -103,6 +103,7 @@ function checkAnswer(event) {
             placeQuestionsOnPage(currentQuestionIndex);
             placeAnswersOnPage(currentQuestionIndex);
         }
+        
         score++;
     }
 };
@@ -114,7 +115,7 @@ function setScore() {
   }
 
 // These functions are used by init
-function getScore() {
+function getScores() {
     // Get stored value from client storage, if it exists
     var storedScore = localStorage.getItem("quizScore");
     // If stored value doesn't exist, set counter to 0
@@ -128,6 +129,13 @@ function getScore() {
     score.textContent = scoreCounter;
   }
 
+// The endQuiz function is called when timer reaches 0
+function endQuiz() {
+    startButton.disabled = false;
+    setScore()
+  }
+
+
 var selectAnswer = document.querySelector(".answersContainer");
 selectAnswer.addEventListener("click", checkAnswer);
 
@@ -137,19 +145,11 @@ function startTimer() {
     timer = setInterval(function() {
       timerCount--;
       timerElement.textContent = timerCount;
-    //   if (timerCount >= 0) {
-    //     // Tests if win condition is met
-    //     if (isWin && timerCount > 0) {
-    //       // Clears interval and stops timer
-    //       clearInterval(timer);
-    //       winGame();
-    //     }
-    //   }
       // Tests if time has run out
       if (timerCount === 0) {
         // Clears interval
         clearInterval(timer);
-        // loseGame();
+        endQuiz();
       }
     }, 1000);
   };
