@@ -156,5 +156,15 @@ function startTimer() {
 
   init();
 
+// reset the quiz
+var resetButton = document.querySelector(".reset-button");
 
+  function resetQuiz() {
+    // Resets win and loss counts
+    scoreCounter = 0;
+    // Renders win and loss counts and sets them into client storage
+    setScore()
+  }
+  // Attaches event listener to button
+  resetButton.addEventListener("click", resetQuiz);
 
