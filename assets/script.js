@@ -96,21 +96,21 @@ function checkAnswer(event) {
     const selectAnswer = questions[currentQuestionIndex].correct;
     if (event.target.textContent === selectAnswer) {
         currentQuestionIndex++;
+        score++;
         if (currentQuestionIndex >= questions.length) {
-            console.log("congrats!");
+            console.log("congrats! you finished the quiz");
+            endQuiz();
         }
         else {
             placeQuestionsOnPage(currentQuestionIndex);
             placeAnswersOnPage(currentQuestionIndex);
         }
-        
-        score++;
     }
 };
 
 // Updates score count on screen and sets score to client storage
 function setScore() {
-    score.textContent = scoreCounter;
+    scoreEl.textContent = score;
     localStorage.setItem("quizScore", quizScore);
   }
 
@@ -126,7 +126,7 @@ function getScores() {
       quizScore = storedScore;
     }
     //Render score count to page
-    score.textContent = scoreCounter;
+    score.textContent = score;
   }
 
 // The endQuiz function is called when timer reaches 0
@@ -161,7 +161,7 @@ var resetButton = document.querySelector(".reset-button");
 
   function resetQuiz() {
     // Resets win and loss counts
-    scoreCounter = 0;
+    score = 0;
     // Renders win and loss counts and sets them into client storage
     setScore()
   }
