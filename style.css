@@ -9,7 +9,7 @@
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
-    background: transparent;
+    background: #b4d6c1;
   }
   
   .reset-button {
@@ -25,6 +25,9 @@
     margin-top: 16px;
   }
 
+  #questions{
+      font-size: 2em;
+  }
   .answers-container{
     display: inline-block;
     width: 44vw;
@@ -42,9 +45,11 @@
   }
 
   button {
-    background: yellow;
+    background: #13293d;
+    color: #fff;
+   
     border-radius: 8px;
-    color: #13293d;
+   
     cursor: pointer;
     font-size: 2em;
     letter-spacing: 0.21px;
@@ -59,9 +64,9 @@
   }
   
   header {
-    padding: 40px;
+    padding: 20px;
     text-align: center;
-    background: #13293d;
+    background: #207675;
     color: #fff;
     border-bottom:30px #879274;
   }
@@ -91,7 +96,7 @@
   }
   
   .card {
-    background: green;
+    background:#358873;
     border: 1px solid #eceff1;
     border-radius: 8px;
     box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
