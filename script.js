@@ -2,14 +2,12 @@ var correct = document.querySelector(".correct");
 var wrong = document.querySelector(".wrong");
 var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector(".start-button");
-
-
 var correctCounter = 0;
 var wrongCounter = 0;
 var isCorrect = false;
 var timer;
 var timerCount;
-let currentQuestionIndex
+let currentQuestionIndex;
 
 
 // questions for the quiz
@@ -69,29 +67,35 @@ function startQuiz() {
     startTimer();
 }
 
+function endQuiz(){
+    if(currentQuestionIndex === questions.length){
+        clearInterval(timer)
+    }
+};
 
-// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
+
 function startTimer() {
     // Sets timer
     timer = setInterval(function () {
         timerCount--;
         timerElement.textContent = timerCount;
         if (timerCount >= 0) {
-            // Tests if win condition is met
+            // Tests if correct condition is met
             if (isCorrect && timerCount > 0) {
                 // Clears interval and stops timer
                 clearInterval(timer);
-                winGame();
+                endQuiz();
             }
         }
         // Tests if time has run out
         if (timerCount === 0) {
             // Clears interval
             clearInterval(timer);
-            loseGame();
+            endQuiz();
         }
     }, 1000);
 }
+
 
 function placeQuestionsOnPage(index) {
     const questionEl = document.getElementById("questions")
@@ -113,6 +117,7 @@ function placeAnswersOnPage(index) {
     answer4.textContent = answerText[3];
 
 };
+
 
 // Updates correct count on screen and sets win count to client storage
 function setCorrect() {
@@ -157,7 +162,7 @@ function checkAnswer(event) {
         currentQuestionIndex++;
         placeQuestionsOnPage(currentQuestionIndex);
         placeAnswersOnPage(currentQuestionIndex);
-        isWin=true;
+        isCorrect=true;
         correctCounter++;
         setCorrect();
     } else {
