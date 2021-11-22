@@ -14,7 +14,7 @@ let currentQuestionIndex;
 var questions = [
     {
         questionText: "What is a variable?",
-        answers: ["A keyword assigned a value to hold information", "A vacation", "a suitcase", "a letter"],
+        answers: ["A keyword assigned a value to hold information", "errors in the console", "boostrap component", "it's not related to web development"],
         correct: "A keyword assigned a value to hold information"
     },
     {
