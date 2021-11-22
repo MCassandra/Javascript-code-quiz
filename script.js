@@ -1,4 +1,3 @@
-// var wordBlank = document.querySelector(".word-blanks");
 var correct = document.querySelector(".correct");
 var wrong = document.querySelector(".wrong");
 var timerElement = document.querySelector(".timer-count");
@@ -52,7 +51,7 @@ var questions = [
     }
 ]
 
-// The init function is called when the page loads 
+// The init function is called when the page loads and grabs scores from local storage
 function init() {
     getCorrect();
     getWrong();
@@ -63,7 +62,6 @@ function startQuiz() {
     console.log("started");
     isCorrect = false;
     currentQuestionIndex = 0;
-    // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
     placeQuestionsOnPage(currentQuestionIndex);
     placeAnswersOnPage(currentQuestionIndex);
@@ -116,19 +114,19 @@ function placeAnswersOnPage(index) {
 
 };
 
-// Updates win count on screen and sets win count to client storage
+// Updates correct count on screen and sets win count to client storage
 function setCorrect() {
     correct.textContent = correctCounter;
     localStorage.setItem("correctCount", correctCounter);
 }
 
-// Updates lose count on screen and sets lose count to client storage
+// Updates wrong count on screen and sets lose count to client storage
 function setWrong() {
     wrong.textContent = wrongCounter;
     localStorage.setItem("wrongCount", wrongCounter);
 }
 
-// These functions are used by init
+
 function getCorrect() {
     // Get stored value from client storage, if it exists
     var storedCorrect = localStorage.getItem("correctCount");
@@ -136,10 +134,10 @@ function getCorrect() {
     if (storedCorrect === null) {
         correctCounter = 0;
     } else {
-        // If a value is retrieved from client storage set the winCounter to that value
+        // If a value is retrieved from client storage set the correctCounter to that value
         correctCounter = storedCorrect;
     }
-    //Render win count to page
+    //Render correct count to page
     correct.textContent = correctCounter;
 }
 
@@ -154,7 +152,6 @@ function getWrong() {
 }
 
 function checkAnswer(event) {
-    // var selectAnswer = document.querySelector(".answers-container");
     const selectAnswer = questions[currentQuestionIndex].correct;
     if (event.target.textContent === selectAnswer) {
         currentQuestionIndex++;
@@ -166,7 +163,7 @@ function checkAnswer(event) {
     } else {
         wrongCounter++;
         setWrong();   
-    }
+    };
 
 };
 
@@ -174,11 +171,11 @@ function checkAnswer(event) {
 
 
 
-// Attach event listener to start button to call startGame function on click
+// Attach event listener to start button to call startQuiz function on click
 
 startButton.addEventListener("click", startQuiz);
-// check answer
 
+// check answer event listener
 var selectAnswer = document.querySelector(".answers-container");
 selectAnswer.addEventListener("click", checkAnswer);
 
@@ -188,13 +185,13 @@ init();
 // Bonus: Add reset button
 var resetButton = document.querySelector(".reset-button");
 
-function resetGame() {
+function resetQuiz() {
     // Resets win and loss counts
     correctCounter = 0;
     wrongCounter = 0;
     // Renders win and loss counts and sets them into client storage
-    setWins()
-    setLosses()
+    setCorrect()
+    setWrong()
 }
 // Attaches event listener to button
-resetButton.addEventListener("click", resetGame);
+resetButton.addEventListener("click", resetQuiz);
