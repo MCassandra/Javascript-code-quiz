@@ -1,13 +1,16 @@
 // elements i need to grab 
 var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector("#startButton");
-var score = document.querySelector(".score");
+var score = document.querySelector("#score");
+var allScores = [];
+var initials = document.getElementById("itinitals")
+var storedScores = JSON.parse(localStorage.getItem("userData")); 
 
 startButton.addEventListener("click", startQuiz);
 
 var timer;
 var timerCount;
-var score;
+var score=0;
 let currentQuestionIndex
 
 // questions for the quiz
@@ -42,6 +45,11 @@ var questions = [
         answers: ["remainder between two numbers", "the sum of two numbers", "the difference of two numbers", "console.log value"],
         correct: "remainder between two numbers"
     },
+    {
+        questionText: "What are strings enlcosed in?",
+        answers: ["curly braces", "brackets", "quotes", "colons"],
+        correct: "quotes"
+    },
 
 ]
 // The init function is called when the page loads 
@@ -60,7 +68,7 @@ function startQuiz() {
     placeAnswersOnPage(currentQuestionIndex);
     startButton.disabled = true;
     startTimer();
-    dislplayScore();
+    setScore();
 }
 
 
@@ -85,8 +93,7 @@ function placeAnswersOnPage(index) {
 
 };
 
-function dislplayScore() {
-    var scoreEl = document.querySelector(".score");
+function setScore() {
     scoreEl.textContent = score;
 
 };
@@ -96,7 +103,7 @@ function checkAnswer(event) {
     const selectAnswer = questions[currentQuestionIndex].correct;
     if (event.target.textContent === selectAnswer) {
         currentQuestionIndex++;
-        score++;
+
         if (currentQuestionIndex >= questions.length) {
             console.log("congrats! you finished the quiz");
             endQuiz();
@@ -109,25 +116,19 @@ function checkAnswer(event) {
 };
 
 // Updates score count on screen and sets score to client storage
-function setScore() {
-    scoreEl.textContent = score;
-    localStorage.setItem("quizScore", quizScore);
-  }
-
-// These functions are used by init
-function getScores() {
-    // Get stored value from client storage, if it exists
-    var storedScore = localStorage.getItem("quizScore");
-    // If stored value doesn't exist, set counter to 0
-    if (storedScore === null) {
-        quizScore = 0;
-    } else {
-      // If a value is retrieved from client storage set the quizScore to that value
-      quizScore = storedScore;
-    }
-    //Render score count to page
-    score.textContent = score;
-  }
+saveButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  
+  var storedScores = {
+    score: score.value,
+    initials: initials.value,
+    
+  };
+  
+  localStorage.setItem("storedScores", JSON.stringify(storedScores));
+  
+  
+  });
 
 // The endQuiz function is called when timer reaches 0
 function endQuiz() {
@@ -154,17 +155,16 @@ function startTimer() {
     }, 1000);
   };
 
-  init();
+  // init();
 
 // reset the quiz
-var resetButton = document.querySelector(".reset-button");
+// var resetButton = document.querySelector(".reset-button");
 
-  function resetQuiz() {
-    // Resets win and loss counts
-    score = 0;
-    // Renders win and loss counts and sets them into client storage
-    setScore()
-  }
-  // Attaches event listener to button
-  resetButton.addEventListener("click", resetQuiz);
-
+//   function resetQuiz() {
+//     // Resets win and loss counts
+//     score = 0;
+//     // Renders win and loss counts and sets them into client storage
+//     setScore()
+//   }
+//   // Attaches event listener to button
+  // resetButton.addEventListener("click", resetQuiz);

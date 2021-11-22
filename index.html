@@ -28,16 +28,14 @@
         <button class="button"id="btn4">Ans 4</button>
     </section>
     <section>
-        <section>
-            <div class="card results">
-              <div class = "score-container">
-              <div>
-              <h2>Score: <span class="score">0 </span> </h2>
-              
-            </div>
-              <button class="reset-button">Reset Score</button>
+        <div id="end-screen" class="hide">
+            <h2>All done!</h2>
+            <p>Your final score is <span id="final-score"></span>.</p>
+            <p>
+              Enter initials: <input type="text" id="initials" max="3" />
+              <button id="submit">Submit</button>
+            </p>
           </div>
-    </section>
     
     <script src="./assets/script.js"></script>    
 </body>
