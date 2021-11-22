@@ -26,28 +26,19 @@
   }
 
   .answers-container{
-    display:flex;
+    display: inline-block;
     width: 44vw;
     height: 300px;
-    justify-content: left;
+    text-align: center;
+    justify-content: center;
   }
   
   .answer-button{
-    background: yellow;
-    justify-content: left;
-    border-radius: 8px;
-    color: #13293d;
-    cursor: pointer;
-    font-size: 16pt;
-    letter-spacing: 0.21px;
-    line-height: 16px;
-    max-width: 100px;
-    padding: 20px 52px;
-    text-align: left;
-    transition-duration: 0.15s;
-    transition-property: background-color;
-    transition-timing-function: linear;
-    margin-top: 0.6em;
+    display: flex;
+    font-size: 16px;
+    height: 30px;
+    line-height: 8px;
+    margin: 13px;
   }
 
   button {
@@ -58,7 +49,7 @@
     font-size: 2em;
     letter-spacing: 0.21px;
     line-height: 16px;
-    max-width: 255px;
+    max-width: 500px;
     padding: 20px 52px;
     text-align: center;
     transition-duration: 0.15s;

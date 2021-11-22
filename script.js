@@ -68,6 +68,7 @@ function startQuiz() {
 }
 
 function endQuiz(){
+    console.log("end")
     if(currentQuestionIndex === questions.length){
         clearInterval(timer)
     }

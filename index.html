@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Code Quiz</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <div class= "large-font">Javascript Quiz</div>
-      <button class="start-button">Start</button>
+        <div class="large-font">Javascript Quiz</div>
+        <button class="start-button">Start</button>
     </header>
 
     <main>
-      <section>
-        <div class="card word-guess">
-          <div id="questions">
-              <h3>Questions</h3>
+        <section>
+            <div class="card word-guess">
+                <div id="questions">
+                    <h3>Questions</h3>
+                </div>
             </div>
-          </div>
-          <div class="card answers-container">
-              <button class="answer-button" id="btn1">Ans1</button>
-              <button class="answer-button" id="btn2">Ans2</button>
-              <button class="answer-button" id="btn3">Ans3</button>
-              <button class="answer-button" id="btn4">Ans4</button>
-          </div>
 
-          
-        
-      </section>
+            
+                <div class="card results">
+                    <div class="win-loss-container">
+                        <div>
+                            <h2>correct: <span class="correct">0 </span> </h2>
+                            <h2>wrong: <span class="wrong">0</span></h2>
+                        </div>
+                        <button class="reset-button">Reset Score</button>
+                    </div>
+                    <div class="card timer">
+                        <div class="timer-text">
+                            <div class="large-font timer-count">60</div>
+                            <h3>seconds remaining</h3>
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+            <div class="card answers-container">
+                <button class="answer-button" id="btn1">Ans1</button>
+                <button class="answer-button" id="btn2">Ans2</button>
+                <button class="answer-button" id="btn3">Ans3</button>
+                <button class="answer-button" id="btn4">Ans4</button>
+            </div>
 
-      <section>
-        <div class="card results">
-          <div class = "win-loss-container">
-          <div>
-          <h2>correct: <span class="correct">0 </span> </h2>
-          <h2>wrong: <span class="wrong">0</span></h2>
-        </div>
-          <button class="reset-button">Reset Score</button>
-      </div>
-          <div class= "card timer">
-            <div class = "timer-text">
-            <div class="large-font timer-count">60</div>
-            <h3>seconds remaining</h3>
-          </div>
-        
-          </div>
-        </div>
-      </section>
     </main>
     <script src="./script.js"></script>
-  </body>
+</body>
+
 </html>
