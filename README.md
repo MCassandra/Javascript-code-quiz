@@ -1,5 +1,5 @@
 # Javascript-code-quiz
-This app is a timed quiz with javascript questions. It was created used HTML, CSS, and Javascript.
+This app is a timed quiz with javascript questions. It was created using HTML, CSS, and Javascript.
 
 ## How it works  
 1. Press the start button.  
@@ -9,4 +9,5 @@ This app is a timed quiz with javascript questions. It was created used HTML, CS
 
 ![screenshot of javascript code quiz](assets/quizscreenshot.png)  
 
-GitHub repo: 
+GitHub repo: https://github.com/MCassandra/Javascript-code-quiz  
+Live app: https://mcassandra.github.io/Javascript-code-quiz/
