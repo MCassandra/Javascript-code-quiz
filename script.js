@@ -1,12 +1,13 @@
-var wordBlank = document.querySelector(".word-blanks");
-var win = document.querySelector(".win");
-var lose = document.querySelector(".lose");
+// var wordBlank = document.querySelector(".word-blanks");
+var correct = document.querySelector(".correct");
+var wrong = document.querySelector(".wrong");
 var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector(".start-button");
 
-var winCounter = 0;
-var loseCounter = 0;
-var isWin = false;
+
+var correctCounter = 0;
+var wrongCounter = 0;
+var isCorrect = false;
 var timer;
 var timerCount;
 let currentQuestionIndex
@@ -53,14 +54,14 @@ var questions = [
 
 // The init function is called when the page loads 
 function init() {
-    getWins();
-    getlosses();
+    getCorrect();
+    getWrong();
 }
 
-// The startGame function is called when the start button is clicked
-function startGame() {
+// starts the quiz when start button clicked
+function startQuiz() {
     console.log("started");
-    isWin = false;
+    isCorrect = false;
     currentQuestionIndex = 0;
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
@@ -70,21 +71,6 @@ function startGame() {
     startTimer();
 }
 
-// The winGame function is called when the win condition is met
-function winGame() {
-    wordBlank.textContent = "finished";
-    winCounter++
-    startButton.disabled = false;
-    setWins()
-}
-
-// The loseGame function is called when timer reaches 0
-function loseGame() {
-    wordBlank.textContent = "TRY AGAIN!";
-    loseCounter++
-    startButton.disabled = false;
-    setLosses()
-}
 
 // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 function startTimer() {
@@ -94,7 +80,7 @@ function startTimer() {
         timerElement.textContent = timerCount;
         if (timerCount >= 0) {
             // Tests if win condition is met
-            if (isWin && timerCount > 0) {
+            if (isCorrect && timerCount > 0) {
                 // Clears interval and stops timer
                 clearInterval(timer);
                 winGame();
@@ -131,40 +117,40 @@ function placeAnswersOnPage(index) {
 };
 
 // Updates win count on screen and sets win count to client storage
-function setWins() {
-    win.textContent = winCounter;
-    localStorage.setItem("winCount", winCounter);
+function setCorrect() {
+    correct.textContent = correctCounter;
+    localStorage.setItem("correctCount", correctCounter);
 }
 
 // Updates lose count on screen and sets lose count to client storage
-function setLosses() {
-    lose.textContent = loseCounter;
-    localStorage.setItem("loseCount", loseCounter);
+function setWrong() {
+    wrong.textContent = wrongCounter;
+    localStorage.setItem("wrongCount", wrongCounter);
 }
 
 // These functions are used by init
-function getWins() {
+function getCorrect() {
     // Get stored value from client storage, if it exists
-    var storedWins = localStorage.getItem("winCount");
+    var storedCorrect = localStorage.getItem("correctCount");
     // If stored value doesn't exist, set counter to 0
-    if (storedWins === null) {
-        winCounter = 0;
+    if (storedCorrect === null) {
+        correctCounter = 0;
     } else {
         // If a value is retrieved from client storage set the winCounter to that value
-        winCounter = storedWins;
+        correctCounter = storedCorrect;
     }
     //Render win count to page
-    win.textContent = winCounter;
+    correct.textContent = correctCounter;
 }
 
-function getlosses() {
-    var storedLosses = localStorage.getItem("loseCount");
-    if (storedLosses === null) {
-        loseCounter = 0;
+function getWrong() {
+    var storedWrong = localStorage.getItem("wrongCount");
+    if (storedWrong === null) {
+        wrongCounter = 0;
     } else {
-        loseCounter = storedLosses;
+        wrongCounter = storedWrong;
     }
-    lose.textContent = loseCounter;
+    wrong.textContent = wrongCounter;
 }
 
 function checkAnswer(event) {
@@ -175,10 +161,11 @@ function checkAnswer(event) {
         placeQuestionsOnPage(currentQuestionIndex);
         placeAnswersOnPage(currentQuestionIndex);
         isWin=true;
+        correctCounter++;
+        setCorrect();
     } else {
-        (currentQuestionIndex >= questions.length) 
-        console.log("congrats! you finished the quiz");
-        loseGame();   
+        wrongCounter++;
+        setWrong();   
     }
 
 };
@@ -189,7 +176,7 @@ function checkAnswer(event) {
 
 // Attach event listener to start button to call startGame function on click
 
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click", startQuiz);
 // check answer
 
 var selectAnswer = document.querySelector(".answers-container");
@@ -203,8 +190,8 @@ var resetButton = document.querySelector(".reset-button");
 
 function resetGame() {
     // Resets win and loss counts
-    winCounter = 0;
-    loseCounter = 0;
+    correctCounter = 0;
+    wrongCounter = 0;
     // Renders win and loss counts and sets them into client storage
     setWins()
     setLosses()
