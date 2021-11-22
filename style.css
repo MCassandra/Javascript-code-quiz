@@ -19,7 +19,7 @@
     margin-top: 20px;
   }
   
-  .win-loss-container {
+  .correct-wrong-container {
     display: flex;
     justify-content: space-between;
     margin-top: 16px;
@@ -28,6 +28,7 @@
   #questions{
       font-size: 2em;
   }
+
   .answers-container{
     display: inline-block;
     width: 44vw;
@@ -85,7 +86,7 @@
     border-radius: 8px;
   }
   
-  .word-guess {
+  .questions {
     width: 30vw;
     height: 300px;
   }
@@ -104,11 +105,7 @@
     margin: auto;
     padding: 20px;
   }
-  
-  .word-blanks {
-    line-height: 360px;
-  }
-  
+
   .large-font {
     font-size: 3.5em;
     text-align:center;
