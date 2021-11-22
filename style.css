@@ -24,7 +24,32 @@
     justify-content: space-between;
     margin-top: 16px;
   }
+
+  .answers-container{
+    display:flex;
+    width: 44vw;
+    height: 300px;
+    justify-content: left;
+  }
   
+  .answer-button{
+    background: yellow;
+    justify-content: left;
+    border-radius: 8px;
+    color: #13293d;
+    cursor: pointer;
+    font-size: 16pt;
+    letter-spacing: 0.21px;
+    line-height: 16px;
+    max-width: 100px;
+    padding: 20px 52px;
+    text-align: left;
+    transition-duration: 0.15s;
+    transition-property: background-color;
+    transition-timing-function: linear;
+    margin-top: 0.6em;
+  }
+
   button {
     background: yellow;
     border-radius: 8px;
@@ -65,8 +90,8 @@
   }
   
   .word-guess {
-    width: 55vw;
-    height: 400px;
+    width: 30vw;
+    height: 300px;
   }
   
   .results {
